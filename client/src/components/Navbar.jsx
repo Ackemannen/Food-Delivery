@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Search, ShoppingBasket } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const Navbar = () => {
+const Navbar = ({ setShowLogin }) => {
   const [menu, setMenu] = useState("Home");
 
   return (
@@ -47,7 +47,10 @@ const Navbar = () => {
             </Link>
             <div className="absolute right-0 top-0 bg-red-600 rounded-full w-2.5 h-2.5"></div>
           </div>
-          <button className="bg-white border border-red-600 text-gray-700 py-2 px-6 rounded-xl cursor-pointer hover:bg-red-100 hover:border-red-500 transition duration-300">
+          <button
+            className="bg-white border border-red-600 text-gray-700 py-2 px-6 rounded-xl cursor-pointer hover:bg-red-100 hover:border-red-500 transition duration-300"
+            onClick={() => setShowLogin(true)}
+          >
             Sign in
           </button>
         </div>
