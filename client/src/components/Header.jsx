@@ -12,7 +12,7 @@ const Header = () => {
         />
       </div>
 
-      <div className="flex flex-col items-start justify-end gap-4 md:gap-8 relative text-white z-10 w-full h-[75vh] py-4 md:py-8 lg:py-16 px-6 md:px-16 lg:px-32 animate-[fadeIn_1s_ease-in-out]">
+      <div className="flex flex-col items-center justify-center sm:items-start sm:justify-end gap-4 md:gap-8 relative text-white z-10 w-full h-[75vh] py-4 md:py-8 lg:py-16 px-6 md:px-16 lg:px-32 animate-[fadeIn_1s_ease-in-out]">
         <h2 className="text-3xl md:text-5xl lg:text-7xl font-bold mb-2 w-2/3 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
           Order your favorite food here!
         </h2>

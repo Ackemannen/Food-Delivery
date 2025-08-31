@@ -13,7 +13,7 @@ const Navbar = () => {
             Foodel
           </h1>
         </Link>
-        <ul className="flex space-x-4 md:space-x-6 lg:space-x-10 text-gray-600 font-semibold">
+        <ul className="hidden md:flex space-x-4 md:space-x-6 lg:space-x-10 text-gray-600 font-semibold">
           <li
             className={`cursor-pointer ${
               menu === "Home" ? "text-red-600" : ""
@@ -29,12 +29,6 @@ const Navbar = () => {
             onClick={() => setMenu("Menu")}
           >
             Menu
-          </li>
-          <li
-            className={`cursor-pointer ${menu === "App" ? "text-red-600" : ""}`}
-            onClick={() => setMenu("App")}
-          >
-            App
           </li>
           <li
             className={`cursor-pointer ${

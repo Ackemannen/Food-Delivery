@@ -1,5 +1,5 @@
 import { MinusIcon, PlusIcon } from "lucide-react";
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { StoreContext } from "../context/StoreContext";
 
 const FoodItem = ({ id, name, price, description, image }) => {

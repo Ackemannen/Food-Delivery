@@ -9,16 +9,18 @@ const FoodDisplay = ({ category }) => {
       <h2 className="text-2xl md:text-4xl font-bold">Food Menu</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-6">
         {food_list.map((item, index) => {
-          return (
-            <FoodItem
-              key={index}
-              id={item._id}
-              name={item.name}
-              price={item.price}
-              description={item.description}
-              image={item.image}
-            />
-          );
+          if (category === "All" || category === item.category) {
+            return (
+              <FoodItem
+                key={index}
+                id={item._id}
+                name={item.name}
+                price={item.price}
+                description={item.description}
+                image={item.image}
+              />
+            );
+          }
         })}
       </div>
     </div>
