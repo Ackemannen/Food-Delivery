@@ -14,7 +14,14 @@ const StoreContextProvider = (props) => {
   };
 
   const removeFromCart = (id) => {
-    setCartItems((prev) => ({ ...prev, [id]: prev[id] - 1 }));
+    setCartItems((prev) => {
+      if (prev[id] === 1) {
+        const { [id]: _, ...rest } = prev;
+        return rest;
+      } else {
+        return { ...prev, [id]: prev[id] - 1 };
+      }
+    });
   };
 
   useEffect(() => {

@@ -1,9 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Search, ShoppingBasket } from "lucide-react";
 import { Link } from "react-router-dom";
+import { StoreContext } from "../context/StoreContext";
 
 const Navbar = ({ setShowLogin }) => {
   const [menu, setMenu] = useState("Home");
+
+  const { cartItems } = useContext(StoreContext);
 
   return (
     <div>
@@ -45,7 +48,11 @@ const Navbar = ({ setShowLogin }) => {
             <Link to="/cart">
               <ShoppingBasket className="cursor-pointer size-6 md:size-7 mr-2" />
             </Link>
-            <div className="absolute right-0 top-0 bg-red-600 rounded-full w-2.5 h-2.5"></div>
+            <div
+              className={`absolute right-0 top-0 bg-red-600 rounded-full w-2.5 h-2.5 ${
+                Object.keys(cartItems).length > 0 ? "block" : "hidden"
+              }`}
+            ></div>
           </div>
           <button
             className="bg-white border border-red-600 text-gray-700 py-2 px-6 rounded-xl cursor-pointer hover:bg-red-100 hover:border-red-500 transition duration-300"

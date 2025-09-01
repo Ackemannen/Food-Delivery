@@ -13,7 +13,7 @@ const App = () => {
   return (
     <>
       {showLogin && <LoginPopup setShowLogin={setShowLogin} />}
-      <div>
+      <div className="min-h-screen">
         <Navbar setShowLogin={setShowLogin} />
         <Routes>
           <Route path="/" element={<Home />} />
