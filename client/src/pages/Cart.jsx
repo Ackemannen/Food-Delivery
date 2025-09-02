@@ -1,9 +1,13 @@
 import React, { useContext } from "react";
 import { StoreContext } from "../context/StoreContext";
 import { MinusIcon, XIcon } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
-  const { cartItems, food_list, removeFromCart } = useContext(StoreContext);
+  const { cartItems, food_list, removeFromCart, getCartTotalAmount } =
+    useContext(StoreContext);
+
+  const navigate = useNavigate();
 
   return (
     <div className="px-4 md:px-16 lg:px-32">
@@ -54,7 +58,7 @@ const Cart = () => {
         <div className="flex-1 flex flex-col gap-6">
           <h2 className="text-3xl font-bold">Cart Totals</h2>
           <div className="text-gray-700 font-semibold flex border-b border-gray-500 pb-4 flex-col gap-2">
-            <div className="flex justify-between border-b border-gray-300">
+            <div className="flex justify-between border-b pb-2 border-gray-300">
               <p>Subtotal</p>
               <p>
                 $
@@ -64,24 +68,29 @@ const Cart = () => {
                 }, 0)}
               </p>
             </div>
-            <div className="flex justify-between border-b border-gray-400">
+            <div className="flex justify-between border-b pb-2 border-gray-400">
               <p>Delivery Fee</p>
-              <p>$5.00</p>
+              <p>${getCartTotalAmount() === 0 ? 0 : (5.0).toFixed(2)}</p>
             </div>
             <div className="flex justify-between font-bold">
               <p>Total</p>
               <p>
                 $
-                {(
-                  Object.keys(cartItems).reduce((total, id) => {
-                    const item = food_list.find((item) => item._id === id);
-                    return total + item.price * cartItems[id];
-                  }, 0) + 5
-                ).toFixed(2)}
+                {getCartTotalAmount() !== 0
+                  ? (
+                      Object.keys(cartItems).reduce((total, id) => {
+                        const item = food_list.find((item) => item._id === id);
+                        return total + item.price * cartItems[id];
+                      }, 0) + 5
+                    ).toFixed(2)
+                  : 0}
               </p>
             </div>
           </div>
-          <button className="bg-red-600 text-white font-semibold p-3 rounded-lg hover:bg-red-500 cursor-pointer mt-4 w-1/2 lg:w-1/4">
+          <button
+            className="bg-red-600 text-white font-semibold p-3 rounded-lg hover:bg-red-500 cursor-pointer mt-4 w-1/2 lg:w-1/4"
+            onClick={() => navigate("/order")}
+          >
             Checkout
           </button>
         </div>
