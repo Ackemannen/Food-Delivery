@@ -13,7 +13,7 @@ const Footer = () => {
       <div className="flex flex-col md:flex-row items-center justify-center md:justify-between mb-8">
         {/* Left Section */}
         <div className="flex flex-col items-center md:items-start md:w-1/3 mb-4 md:mb-0 gap-6">
-          <h1 className="!text-5xl md:text-4xl font-bold text-red-600">
+          <h1 className="!text-5xl md:text-4xl font-bold text-red-600 drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
             Foodel
           </h1>
           <p className="text-gray-200 w-2/3 md:w-full">
@@ -30,7 +30,9 @@ const Footer = () => {
         </div>
         {/* Middle Section */}
         <div className="flex flex-col items-center md:items-start mb-4 md:mb-0 gap-6">
-          <h2 className="text-2xl text-red-600 font-semibold">COMPANY</h2>
+          <h2 className="text-2xl text-red-600 font-semibold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+            COMPANY
+          </h2>
           <ul className="text-gray-200">
             <li className="mb-2 cursor-pointer hover:text-red-400">Home</li>
             <li className="mb-2 cursor-pointer hover:text-red-400">About</li>
@@ -42,7 +44,9 @@ const Footer = () => {
         </div>
         {/* Right Section */}
         <div className="flex flex-col items-center md:items-start mb-4 md:mb-0 gap-6">
-          <h2 className="text-2xl text-red-600 font-semibold">CONTACT</h2>
+          <h2 className="text-2xl text-red-600 font-semibold drop-shadow-[0_1.2px_1.2px_rgba(0,0,0,0.8)]">
+            CONTACT
+          </h2>
           <ul className="text-gray-200">
             <li className="flex gap-2 mb-4">
               <PhoneCallIcon className="text-red-600" size={22} />
