@@ -6,12 +6,14 @@ import MakeOrder from "./pages/MakeOrder";
 import Footer from "./components/Footer";
 import { useState } from "react";
 import LoginPopup from "./components/LoginPopup";
+import { ToastContainer } from "react-toastify";
 
 const App = () => {
   const [showLogin, setShowLogin] = useState(false);
 
   return (
     <>
+      <ToastContainer />
       {showLogin && <LoginPopup setShowLogin={setShowLogin} />}
       <div className="min-h-screen">
         <Navbar setShowLogin={setShowLogin} />

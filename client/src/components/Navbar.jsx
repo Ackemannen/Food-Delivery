@@ -1,12 +1,25 @@
 import React, { useContext, useState } from "react";
-import { Search, ShoppingBasket } from "lucide-react";
-import { Link } from "react-router-dom";
+import {
+  LogOutIcon,
+  Search,
+  ShoppingBagIcon,
+  ShoppingBasket,
+  UserIcon,
+} from "lucide-react";
+import { Link, useNavigate } from "react-router-dom";
 import { StoreContext } from "../context/StoreContext";
 
 const Navbar = ({ setShowLogin }) => {
   const [menu, setMenu] = useState("Home");
 
-  const { cartItems } = useContext(StoreContext);
+  const { cartItems, token, setToken } = useContext(StoreContext);
+  const navigate = useNavigate();
+
+  const logout = () => {
+    localStorage.removeItem("token");
+    setToken("");
+    navigate("/");
+  };
 
   return (
     <div>
@@ -54,12 +67,31 @@ const Navbar = ({ setShowLogin }) => {
               }`}
             ></div>
           </div>
-          <button
-            className="bg-white border border-red-600 text-gray-700 py-2 px-6 rounded-xl cursor-pointer hover:bg-red-100 hover:border-red-500 transition duration-300"
-            onClick={() => setShowLogin(true)}
-          >
-            Sign in
-          </button>
+          {!token ? (
+            <button
+              className="bg-red-600 text-white text-base md:!text-lg font-semibold py-2 px-6 rounded-xl cursor-pointer hover:bg-red-500 transition duration-300"
+              onClick={() => setShowLogin(true)}
+            >
+              Sign in
+            </button>
+          ) : (
+            <div className="relative group">
+              <UserIcon className="cursor-pointer size-6 md:size-7" />
+              <ul className="absolute hidden right-0 z-1 group-hover:flex flex-col gap-2 bg-gray-100 shadow-lg p-4 rounded-2xl border border-red-400">
+                <li className="flex items-center gap-2 cursor-pointer">
+                  <ShoppingBagIcon className="text-red-500 size-5" />
+                  <p>Orders</p>
+                </li>
+                <li
+                  className="flex items-center gap-2 cursor-pointer border-t border-red-400 pt-2"
+                  onClick={logout}
+                >
+                  <LogOutIcon className="text-red-500 size-5" />
+                  <p>Logout</p>
+                </li>
+              </ul>
+            </div>
+          )}
         </div>
       </nav>
     </div>
