@@ -4,6 +4,7 @@ import { StoreContext } from "../context/StoreContext";
 
 const FoodItem = ({ id, name, price, description, image }) => {
   const { cartItems, addToCart, removeFromCart } = useContext(StoreContext);
+
   return (
     <div className="rounded-2xl shadow-md animate-[fadeIn_1s_ease-in-out]">
       <div className="relative">
