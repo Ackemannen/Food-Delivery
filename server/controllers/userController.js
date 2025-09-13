@@ -19,7 +19,11 @@ const loginUser = async (req, res) => {
     }
 
     const token = createToken(user._id);
-    res.status(200).json({ token: token }).send("User logged in successfully");
+    res.status(200).json({
+      success: true,
+      message: "User logged in successfully",
+      token,
+    });
   } catch (error) {
     console.log(error);
     res.status(500).send("Error logging in user");

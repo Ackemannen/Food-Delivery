@@ -4,7 +4,7 @@ import { MinusIcon, XIcon } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
-  const { cartItems, food_list, removeFromCart, getCartTotalAmount } =
+  const { cartItems, foodList, removeFromCart, getCartTotalAmount, url } =
     useContext(StoreContext);
 
   const navigate = useNavigate();
@@ -19,7 +19,7 @@ const Cart = () => {
           <p>Quantity</p>
           <p>Total</p>
         </div>
-        {food_list.map((item, index) => {
+        {foodList.map((item, index) => {
           if (cartItems[item._id] > 0) {
             return (
               <div
@@ -27,7 +27,7 @@ const Cart = () => {
                 className="grid grid-cols-6 gap-4 justify-center items-center shadow-md rounded-lg mb-4 text-black font-semibold"
               >
                 <img
-                  src={item.image}
+                  src={`${url}/images/${item.image}`}
                   alt={item.name}
                   className="w-16 h-16 object-cover rounded"
                 />
@@ -63,7 +63,7 @@ const Cart = () => {
               <p>
                 $
                 {Object.keys(cartItems).reduce((total, id) => {
-                  const item = food_list.find((item) => item._id === id);
+                  const item = foodList.find((item) => item._id === id);
                   return total + item.price * cartItems[id];
                 }, 0)}
               </p>
@@ -79,7 +79,7 @@ const Cart = () => {
                 {getCartTotalAmount() !== 0
                   ? (
                       Object.keys(cartItems).reduce((total, id) => {
-                        const item = food_list.find((item) => item._id === id);
+                        const item = foodList.find((item) => item._id === id);
                         return total + item.price * cartItems[id];
                       }, 0) + 5
                     ).toFixed(2)

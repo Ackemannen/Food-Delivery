@@ -1,24 +1,9 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { StoreContext } from "../context/StoreContext";
 import FoodItem from "./FoodItem";
-import axios from "axios";
 
 const FoodDisplay = ({ category }) => {
-  const { url } = useContext(StoreContext);
-  const [foodList, setFoodList] = useState([]);
-
-  useEffect(() => {
-    const fetchFood = async () => {
-      try {
-        const response = await axios.get(`${url}/api/food/list`);
-        setFoodList(response.data.data); // assuming API returns an array
-      } catch (error) {
-        console.error("Error fetching food list:", error);
-      }
-    };
-
-    fetchFood();
-  }, [url]);
+  const { url, foodList } = useContext(StoreContext);
 
   return (
     <div className="mt-10">
