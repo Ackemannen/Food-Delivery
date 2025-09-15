@@ -1,5 +1,5 @@
-import React, { useContext, useState } from "react";
-import { Navigate } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 import { StoreContext } from "../context/StoreContext";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -51,6 +51,16 @@ const MakeOrder = () => {
       toast.error("Order placement failed. Please try again.");
     }
   };
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!token) {
+      navigate("/cart");
+    } else if (Object.keys(cartItems).length === 0) {
+      navigate("/cart");
+    }
+  }, [token]);
 
   return (
     <div className="px-4 md:px-16 lg:px-32 mt-24 md:mt-32">

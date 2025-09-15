@@ -79,8 +79,10 @@ const Navbar = ({ setShowLogin }) => {
               <UserIcon className="cursor-pointer size-6 md:size-7" />
               <ul className="absolute hidden right-0 z-1 group-hover:flex flex-col gap-2 bg-gray-100 shadow-lg p-4 rounded-2xl border border-red-400">
                 <li className="flex items-center gap-2 cursor-pointer">
-                  <ShoppingBagIcon className="text-red-500 size-5" />
-                  <p>Orders</p>
+                  <Link to="/myorders" className="flex items-center gap-2">
+                    <ShoppingBagIcon className="text-red-500 size-5" />
+                    <p>Orders</p>
+                  </Link>
                 </li>
                 <li
                   className="flex items-center gap-2 cursor-pointer border-t border-red-400 pt-2"
