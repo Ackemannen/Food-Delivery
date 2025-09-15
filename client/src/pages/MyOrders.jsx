@@ -48,7 +48,10 @@ const MyOrders = () => {
                 <span className="text-red-500">&#x25cf;</span>
                 <strong>{order.status}</strong>
               </p>
-              <button className="py-2 px-4 rounded-lg bg-gray-300 cursor-pointer hover:bg-gray-400 transition">
+              <button
+                className="py-2 px-4 rounded-lg bg-gray-300 cursor-pointer hover:bg-gray-400 transition"
+                onClick={getOrders}
+              >
                 Track Order
               </button>
             </div>

@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
 import { X } from "lucide-react";
 
@@ -8,7 +8,6 @@ const List = ({ url }) => {
 
   const getList = async () => {
     const response = await axios.get(`${url}/api/food/list`);
-    console.log(response.data);
     if (response.status === 200) {
       setList(response.data.data);
     } else {
@@ -16,6 +15,10 @@ const List = ({ url }) => {
       toast.error("Could not fetch list");
     }
   };
+
+  useEffect(() => {
+    getList();
+  }, []);
 
   const removeItem = async (id) => {
     const response = await axios.delete(`${url}/api/food/remove`, {
@@ -31,7 +34,7 @@ const List = ({ url }) => {
   };
 
   return (
-    <div className="text-gray-700 w-full p-6">
+    <div className="text-gray-700 w-full ">
       <p className="text-2xl font-bold mb-6">All Foods List</p>
       <div className="flex flex-col">
         <div className="hidden sm:grid grid-cols-5 items-center border border-gray-400 p-2 sm:text-lg">
